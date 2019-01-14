@@ -83,7 +83,7 @@ author:
   name             : "Juan Martín Loyola"
   avatar           : "profile.jpg"
   bio              : "Computer Science PhD Student"
-  location         : "San Luis, Argentina"
+  location         :
   employer         : "IMASL (CONICET - UNSL)"
   googlescholar    : "https://scholar.google.com/citations?user=EvpfZQMAAAAJ"
   email            : "jmloyola@unsl.edu.ar"
@@ -196,9 +196,9 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: false
       share: true
-      related: true
+      related: false
   # _pages
   - scope:
       path: ""
@@ -213,8 +213,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comments: true
+      share: false
+      comments: false
   # _publications
   - scope:
       path: ""
@@ -222,8 +222,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comments: true
+      share: false
+      comments: false
   # _portfolio
   - scope:
       path: ""
@@ -231,8 +231,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comment: true
+      share: false
+      comment: false
   # _talks
   - scope:
       path: ""
