@@ -9,6 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
+To download my curriculum vitae in spanish you can click [here](../files/spanish_cv.pdf).
+{: .notice--info}
+
 Education
 ======
 * B.S. in Computer Science, Universidad Nacional de San Luis, 2017
