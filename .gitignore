@@ -1,2 +1,5 @@
 _site/
 
+# Jupyter Notebook
+.ipynb_checkpoints
+
