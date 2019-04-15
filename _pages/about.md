@@ -8,4 +8,4 @@ redirect_from:
   - /about.html
 ---
 
-This is Juan Martín Loyola's home on the web!
+I am a computer science PhD student at San Luis National University working on models for early classification.
