@@ -1,5 +1,5 @@
 ---
-title: "Classification of RNA backbone conformation into rotamers using <sup>13</sup>C&prime; chemical shifts How far we can go"
+title: "Classification of RNA backbone conformation into rotamers using <sup>13</sup>C&prime; chemical shifts How far we can go?"
 collection: publications
 permalink: /publication/2019-02-25-classification-of-RNA-backbone-conformation-into-rotamers
 excerpt: "In the present work, we use the ribose experimental and theoretical <sup>13</sup>C&prime; chemical shifts data and machine learning methods to classify RNA backbone conformations into rotamers and families of rotamers."

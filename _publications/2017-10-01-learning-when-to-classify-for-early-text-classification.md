@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2017-10-01-learning-when-to-classify-for-early-text-classification
 excerpt: 'This paper presents a simple framework for early text classification.'
 date: 2017-10-01
-venue: 'XXIII Congreso Argentino de Ciencias de la Computación (La Plata, 2017)'
+venue: 'Argentine Congress of Computer Science'
 paperurl: 'http://hdl.handle.net/10915/63498'
 citation: "Loyola, J. M., Errecalde, M. L., Escalante, H. J., & y Gomez, M. M. (2017, October). Learning When to Classify for Early Text Classification. In Argentine Congress of Computer Science (pp. 24-34). Springer, Cham."
 ---
