@@ -14,8 +14,8 @@ To download my curriculum vitae in spanish you can click [here](../files/spanish
 
 Education
 ======
-* B.S. in Computer Science, Universidad Nacional de San Luis, 2017
-* Ph.D in Computer Science, Universidad Nacional de San Luis, 2022 (expected)
+* B.S. in Computer Science, National University of San Luis, 2017
+* Ph.D in Computer Science, National University of San Luis, 2022 (expected)
 
 Work experience
 ======

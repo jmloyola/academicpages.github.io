@@ -8,4 +8,4 @@ redirect_from:
   - /about.html
 ---
 
-I am a computer science PhD student at San Luis National University working on models for early classification.
+I am a computer science PhD student at National University of San Luis working on models for early classification.
