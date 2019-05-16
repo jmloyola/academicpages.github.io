@@ -15,7 +15,7 @@ Last week Google announced the accepted students for the Google Summer of Code (
 
 Bayesian Additive Regression Trees (BART) is a Bayesian nonparametric approach to estimating functions using regression trees. A BART model consist of a sum of regression trees with (homoskedastic) normal additive noise. Regression trees are defined by recursively partitioning the input space, and defining a local model in each resulting region of input space in order to approximate some unknown function. BARTs are useful and flexible models to capture interactions and non-linearities and have been proved useful tools for variable selection.
 
-The Bayesian Additive Regression Trees will allow PyMC3 users to perform regressions with a “canned” non-parametric model. By simple calling a method, users will obtain the mean regressor plus the uncertainty estimation in a fully Bayesian way. This can be used later to predict on hold-out data. Furthermore, the implemented BART model will allow experience users to specify their own priors for the specific problem they are tackling, improving performance substantially.
+Bayesian Additive Regression Trees will allow PyMC3 users to perform regressions with a “canned” non-parametric model. By simple calling a method, users will obtain the mean regressor plus the uncertainty estimation in a fully Bayesian way. This can be used later to predict on hold-out data. Furthermore, the implemented BART model will allow experience users to specify their own priors for the specific problem they are tackling, improving performance substantially.
 
 In the next few weeks, Community Bonding Period, I will:
 
