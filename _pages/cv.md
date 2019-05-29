@@ -9,7 +9,10 @@ redirect_from:
 
 {% include base_path %}
 
-To download my curriculum vitae in spanish you can click [here](../files/spanish_cv.pdf).
+To download my curriculum vitae in english you can click [here](../files/CV/english_short_cv.pdf).
+{: .notice--success}
+
+To download my curriculum vitae in spanish you can click [here](../files/CV/spanish_short_cv.pdf).
 {: .notice--info}
 
 Education
@@ -27,6 +30,8 @@ Skills
 ======
 * Python
   * Numpy
+  * Pandas
+  * SciPy
   * Pytorch
 * Java
 
