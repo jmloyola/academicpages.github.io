@@ -9,7 +9,7 @@ At this point the bonding period already ended and we are in the middle of the c
 
 ## Community bonding period
 
-The community bonding period is a time for students to learn about the organization's processes, developer interactions, codes of conduct, set up environment, etc. Since I already contributed to PyMC3, I had my working environment set up by now. Thus, I used this time to organize the project, talk to my mentors and learn more about the community.
+The community bonding period is a time for students to learn about the organization's processes, developer interactions, codes of conduct, set up environment, etc. Since I already contributed to PyMC3, I had my working environment set up by then. Thus, I used this time to organize the project, talk to my mentors and learn more about the community.
 
 In this period, Austin, Osvaldo and me had an online meeting to introduce ourselves. We talked about the project and coordinated future meetings. Since Osvaldo and me live in the same city, we arranged to meet in person every week. Then, every three weeks or so, Austin,  Osvaldo and me will meet online to discuss questions or problems about the project. I shared a Trello board with my mentors to show them what task I'm working on.
 
