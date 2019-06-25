@@ -25,7 +25,7 @@ $$Y=f(x)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)$$
 To solve this regression problem, BART approximates $f(x)=E(Y \mid x)$ using $f(x)\approx h(x)\equiv \sum_{j=1}^{m}g_j(x)$, where each $g_j$ denotes a regression tree:
 
 
-$$Y=h(x)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)$$
+$$Y=h(x)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)\label{general-sum-of-tree-model}$$
 
 # The BART model
 
@@ -33,25 +33,25 @@ The BART model consists of two parts: a sum-of-trees model and a regularization 
 
 ## A sum-of-trees model
 
-To elaborate the form of the sum-of-trees model (2), we begin by establishing notation for a single tree model. Let $T$ denote a binary tree consisting of a set of interior node decision rules and a set of terminal nodes, and let $M=\\{\mu_1, \mu_2, \ldots, \mu_b\\}$ denote a set of parameter values associated with each of the $b$ terminal nodes of $T$. The decision rules are binary splits of the predictor space of the form $\\{x \in A\\}$ vs $\\{x \notin A\\}$ where $A$ is a subset of the range of $x$. These are typically based on the single components of $x = (x_1, \dots , x_p)$ and are of the form $\\{x_i \leq c\\}$ vs $\\{x_i > c\\} $ for continuous $x_i$. Given the way it is constructed, the tree is a full binary tree, that is, each node has exactly zero or two children. Each $x$ value is associated with a single terminal node of $T$ by the sequence of decision rules from top to bottom, and is then assigned the $\mu_i$ value associated with this terminal node. For a given $T$ and $M$, we use $g(x; T, M)$ to denote the function which assigns a $\mu_i \in M$ to $x$.
+To elaborate the form of the sum-of-trees model (\ref{general-sum-of-tree-model}), we begin by establishing notation for a single tree model. Let $T$ denote a binary tree consisting of a set of interior node decision rules and a set of terminal nodes, and let $M=\\{\mu_1, \mu_2, \ldots, \mu_b\\}$ denote a set of parameter values associated with each of the $b$ terminal nodes of $T$. The decision rules are binary splits of the predictor space of the form $\\{x \in A\\}$ vs $\\{x \notin A\\}$ where $A$ is a subset of the range of $x$. These are typically based on the single components of $x = (x_1, \dots , x_p)$ and are of the form $\\{x_i \leq c\\}$ vs $\\{x_i > c\\} $ for continuous $x_i$. Given the way it is constructed, the tree is a full binary tree, that is, each node has exactly zero or two children. Each $x$ value is associated with a single terminal node of $T$ by the sequence of decision rules from top to bottom, and is then assigned the $\mu_i$ value associated with this terminal node. For a given $T$ and $M$, we use $g(x; T, M)$ to denote the function which assigns a $\mu_i \in M$ to $x$.
 
-With this notation, the sum-of-trees model (2) can be more explicitly expressed as:
+With this notation, the sum-of-trees model (\ref{general-sum-of-tree-model}) can be more explicitly expressed as:
 
-$$Y=\sum_{j=1}^{m}g(x; T_j, M_j)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)$$
+$$Y=\sum_{j=1}^{m}g(x; T_j, M_j)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)\label{well-specified-sum-of-tree-model}$$
 
-where for each binary regression tree $T_j$ and its associated terminal node parameters $M_j$, $g(x; T_j, M_j)$ is the function which assigns $\mu_{ij} \in M_j$ to $x$. Under (3), $E(Y \mid x)$ equals the sum of all the terminal node $\mu_{ij}$'s assigned to $x$ by the $g(x; T_j, M_j)$’s.
+where for each binary regression tree $T_j$ and its associated terminal node parameters $M_j$, $g(x; T_j, M_j)$ is the function which assigns $\mu_{ij} \in M_j$ to $x$. Under (\ref{well-specified-sum-of-tree-model}), $E(Y \mid x)$ equals the sum of all the terminal node $\mu_{ij}$'s assigned to $x$ by the $g(x; T_j, M_j)$’s.
 
 The following image is an example of $g(x; T_j, M_j)$,
 
 ![single-tree]({{site.url}}{{site.baseurl}}/images/posts/2019-06-23-introduction-to-bart/tree.png){: .align-center}
 
-Each such $\mu_{ij}$ will represent a main effect when $g(x; T_j, M_j)$ depends on only one component of $x$ (i.e., single variable), and will represent an interaction effect when $g(x; T_j, M_j)$ depends on more than one component of $x$ (i.e., more than one variable). Thus, the sum-of-trees model can incorporate both main effects and interaction effects. And because (3) may be based on trees of varying sizes, the interaction effects may be of varying orders. In the special case where every terminal node assignment depends on just a single component of $x$, the sum-of-trees model reduces to a simple additive function, a sum of step functions of the individual components of $x$.
+Each such $\mu_{ij}$ will represent a main effect when $g(x; T_j, M_j)$ depends on only one component of $x$ (i.e., single variable), and will represent an interaction effect when $g(x; T_j, M_j)$ depends on more than one component of $x$ (i.e., more than one variable). Thus, the sum-of-trees model can incorporate both main effects and interaction effects. And because (\ref{well-specified-sum-of-tree-model}) may be based on trees of varying sizes, the interaction effects may be of varying orders. In the special case where every terminal node assignment depends on just a single component of $x$, the sum-of-trees model reduces to a simple additive function, a sum of step functions of the individual components of $x$.
 
-With a large number of trees, a sum-of-trees model gains increased representation flexibility which endows BART with excellent predictive capabilities. This representational flexibility is obtained by rapidly increasing the number of parameters. Indeed, for fixed $m$, each sum-of-trees model (3) is determined by $(T_1, M_1), \ldots,(T_m, M_m)$ and $\sigma$, which includes all the bottom node parameters as well as the tree structures and decision rules.
+With a large number of trees, a sum-of-trees model gains increased representation flexibility which endows BART with excellent predictive capabilities. This representational flexibility is obtained by rapidly increasing the number of parameters. Indeed, for fixed $m$, each sum-of-trees model (\ref{well-specified-sum-of-tree-model}) is determined by $(T_1, M_1), \ldots,(T_m, M_m)$ and $\sigma$, which includes all the bottom node parameters as well as the tree structures and decision rules.
 
 ## A regularization prior
 
-The BART model specification is completed by imposing a prior over all the parameters of the sum-of-trees model, namely, $(T_1, M_1), \ldots,(T_m, M_m)$ and $\sigma$. There exists specifications of this prior that effectively regularize the fit by keeping the individual tree effects from being unduly influential. Without such a regularizing influence, large tree components would overwhelm the rich structure of (3), thereby limiting the advantages of the additive representation both in terms of function approximation and computation.
+The BART model specification is completed by imposing a prior over all the parameters of the sum-of-trees model, namely, $(T_1, M_1), \ldots,(T_m, M_m)$ and $\sigma$. There exists specifications of this prior that effectively regularize the fit by keeping the individual tree effects from being unduly influential. Without such a regularizing influence, large tree components would overwhelm the rich structure of (\ref{well-specified-sum-of-tree-model}), thereby limiting the advantages of the additive representation both in terms of function approximation and computation.
 
 Chipman et al. proposed a prior formulation in term of just a few interpretable hyperparameters which govern priors on $T_j$, $M_j$ and $\sigma$. When domain information is not available the authors recomend using an _empirical Bayes_ approach and calibrate the prior using the observed variation in $y$. Or at least to obtaing a range of plausible values and the perform cross-validation to select from these values.
 
@@ -118,7 +118,7 @@ Given the observed data $y$, the Bayesian setup induces a posterior distribution
 
 $$ p((T_1, M_1), \ldots, (T_m, M_m), \sigma \mid y) $$
 
-on all the unknowns that determine a sum-of-trees model (3). Although the sheer size of the parameter space precludes exhaustive calculation, Chipman et al. propose a backfitting MCMC algorithm that can be used to sample from this posterior. On the other hand, Lakshminarayanan et al. show that Particle Gibbs is a better approach for Bayesian Additive Regression Trees. In a future post, we'll talk more about this.
+on all the unknowns that determine a sum-of-trees model (\ref{well-specified-sum-of-tree-model}). Although the sheer size of the parameter space precludes exhaustive calculation, Chipman et al. propose a backfitting MCMC algorithm that can be used to sample from this posterior. On the other hand, Lakshminarayanan et al. show that Particle Gibbs is a better approach for Bayesian Additive Regression Trees. In a future post, we'll talk more about this.
 
 # Results
 The ouput of a BART model is:
