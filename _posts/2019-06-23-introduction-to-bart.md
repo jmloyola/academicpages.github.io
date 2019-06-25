@@ -59,12 +59,11 @@ Chipman et al. proposed a prior formulation in term of just a few interpretable 
 
 In order to simplify the specification of the regularization prior we restrict our attention to priors for which the tree components ($T_j$, $M_j$) are independent of each other and also independent of $\sigma$, and the terminal node parameters of every tree are independent. 
 
-$$
-\begin{align}
-p((T_1 , M_1), \ldots , (T_m , M_m ), \sigma ) &= \left [ \prod_j p(T_j , M_j) \right ] p(\sigma)\\
-&= \left [ \prod_j p(M_j \mid T_j) p(T_j) \right ] p(\sigma)
-\end{align}
-$$
+\begin{equation}
+\begin{split}
+p((T_1 , M_1), \ldots , (T_m , M_m ), \sigma ) &= \left [ \prod_j p(T_j , M_j) \right ] p(\sigma)\\\\ &= \left [ \prod_j p(M_j \mid T_j) p(T_j) \right ] p(\sigma)
+\end{split}
+\end{equation}
 
 and
 
