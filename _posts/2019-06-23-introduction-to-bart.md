@@ -2,7 +2,6 @@
 title: 'Introduction to Bayesian Additive Regression Trees'
 date: 2019-06-23
 permalink: /posts/2019/06/introduction-to-bart
-author_profile: false
 header:
   overlay_image: /posts/2019-06-23-introduction-to-bart/header_san_luis.jpg
   caption: "San Luis, Argentina"
