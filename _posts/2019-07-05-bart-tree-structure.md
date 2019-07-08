@@ -10,12 +10,12 @@ tags:
 
 As we commented in the previous [post]({{ site.baseurl }}{% post_url 2019-06-23-introduction-to-bart %}), BART is a sum-of-trees model where each tree is a decision tree. Thus, to implement the BART model first we have to implement the tree structure used by it. The tree implementation will need:
 
-- A data structure to link the nodes. This should allows as to randomly access a node in the tree and to easily add and delete a node.
+- A data structure to link the nodes. This should allow us to randomly access a node in the tree and to easily add and delete a node.
 - Two types of nodes that make up the tree: splitting nodes and leaf nodes. The splitting nodes will be responsible for the division of the predictor space and gather the logic to traverse tree given an element $x$; the leaf nodes have the responses $\mu_{ij}$ for the tree.
 - Functions to grow and prune the tree.
 - Checks of correctness of the tree.
 
-# Data structure to link the nodes
+## Data structure to link the nodes
 
 Two types of data structures were consider:
 
@@ -30,11 +30,9 @@ Therefore, we thought of a structure that would explicitly represent the nodes a
 
 A complete binary tree is efficiently implemented as an array, where a node at location $i$ has children at indexes $2i + 1$ and $2i + 2$ and a parent at location $\left \lfloor{(i - 1) / 2}\right \rfloor $. Since Python doesn't have a built-in array structure, we consider two basic structures: `list` and `dict`.
 
-Note that, although we consider that the indices are taken from numbering a complete binary tree, BART does not necessary construct this type of trees. The only thing we can ensure about the tree structure is that each node of the tree has exactly zero or two children. Yet, this numbering will proves us useful for indexing our structure.
+Note that, although we consider that the indices are taken from numbering a complete binary tree, BART does not necessary construct this type of trees. The only thing we can ensure about the tree structure is that each node of the tree has exactly zero or two children. Yet, this numbering will prove us useful for indexing our structure.
 
-If we try to implement this structure using a list, we would end up with a lot of wasted space since we would have to create dummy nodes to represent non-existent nodes.
-
-For all this, we ended up coding the tree structure as a dictionary, where the keys represent the nodes position and the values represent the nodes itself.
+If we try to implement this structure using a list, we would end up with a lot of wasted space since we would have to create dummy nodes to represent non-existent nodes. Thus, we ended up coding the tree structure as a dictionary, where the keys represent the nodes position and the values represent the nodes itself.
 
 {% highlight python %}
 class Tree:
@@ -87,7 +85,7 @@ class Tree:
             self.idx_leaf_nodes.remove(index)
 {% endhighlight %}
 
-# Tree nodes
+## Tree nodes
 
 Both splitting and leaf nodes inherit from a base class called `BaseNode` which has two attributes: index and depth.
 
@@ -119,7 +117,9 @@ class LeafNode(BaseNode):
         self.value = value
 {% endhighlight %}
 
-# Functions to grow and prune the tree
+## Functions to grow and prune the tree
+
+Every tree can only grow from a leaf node. When this happen, the old node is replaced for a splitting node and two leaf nodes. On the other hand, when we prune a tree, we select a prunable node (splitting node that have two leaf nodes as children) from the tree, delete its children and replace the node for a leaf node.
 
 {% highlight python %}
 class Tree:
@@ -152,7 +152,7 @@ class Tree:
         self.set_node(index_split_node, new_leaf_node)
 {% endhighlight %}
 
-# Checks of correctness of the tree
+## Checks of correctness of the tree
 
 Although the user will not be creating trees, but since we want our code to fail as soon as something bad happens (specially during develping), we added checks of correctness of the tree and raised exceptions if something was wrong. We also created tests to control that after each commit the implementation is still correct.
 
