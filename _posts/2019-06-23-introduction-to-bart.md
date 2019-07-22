@@ -16,15 +16,15 @@ tags:
 
 Bayesian Additive Regression Trees (BART) is a sum-of-trees model for approximating an unknown function $f$. Like other ensemble methods, every tree act as a weak learner, explaining only part of the result. All these trees are of a particular kind called decision trees. The decision tree is a very interpretable and flexible model but it is also prone to overfitting. To avoid overfitting, BART uses a regularization prior that forces each tree to be able to explain only a limited subset of the relationships between the covariates and the predictor variable.
 
-The problem BART tackles is making inference about an unknown function $f$ that predicts an output $Y$ using a $p$ dimensional vector of inputs $x=(x_1,\ldots,x_p)$ when
+The problem BART tackles is making inference about an unknown function $f$ that predicts an output $y$ using a $p$ dimensional vector of inputs $x=(x_1,\ldots,x_p)$ when
 
-$$Y=f(x)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)$$
-
-
-To solve this regression problem, BART approximates $f(x)=E(Y \mid x)$ using $f(x)\approx h(x)\equiv \sum_{j=1}^{m}g_j(x)$, where each $g_j$ denotes a regression tree:
+$$y=f(x)+\epsilon\text{,}\qquad \epsilon \sim \mathcal{N}(0,\sigma^2)$$
 
 
-$$Y=h(x)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)\label{general-sum-of-tree-model}$$
+To solve this regression problem, BART approximates $f(x)=E(y \mid x)$ using $f(x)\approx h(x)\equiv \sum_{j=1}^{m}g_j(x)$, where each $g_j$ denotes a regression tree:
+
+
+$$y=h(x)+\epsilon\text{,}\qquad \epsilon \sim \mathcal{N}(0,\sigma^2)\label{general-sum-of-tree-model}$$
 
 # The BART model
 
@@ -36,9 +36,9 @@ To elaborate the form of the sum-of-trees model (\ref{general-sum-of-tree-model}
 
 With this notation, the sum-of-trees model (\ref{general-sum-of-tree-model}) can be more explicitly expressed as:
 
-$$Y=\sum_{j=1}^{m}g(x; T_j, M_j)+\epsilon\text{,}\qquad \epsilon \sim N(0,\sigma^2)\label{well-specified-sum-of-tree-model}$$
+$$y=\sum_{j=1}^{m}g(x; T_j, M_j)+\epsilon\text{,}\qquad \epsilon \sim \mathcal{N}(0,\sigma^2)\label{well-specified-sum-of-tree-model}$$
 
-where for each binary regression tree $T_j$ and its associated terminal node parameters $M_j$, $g(x; T_j, M_j)$ is the function which assigns $\mu_{ij} \in M_j$ to $x$. Under (\ref{well-specified-sum-of-tree-model}), $E(Y \mid x)$ equals the sum of all the terminal node $\mu_{ij}$'s assigned to $x$ by the $g(x; T_j, M_j)$’s.
+where for each binary regression tree $T_j$ and its associated terminal node parameters $M_j$, $g(x; T_j, M_j)$ is the function which assigns $\mu_{ij} \in M_j$ to $x$. Under (\ref{well-specified-sum-of-tree-model}), $E(y \mid x)$ equals the sum of all the terminal node $\mu_{ij}$'s assigned to $x$ by the $g(x; T_j, M_j)$’s.
 
 The following image is an example of $g(x; T_j, M_j)$,
 
@@ -83,13 +83,13 @@ The $T_j$ prior, $p(T_j)$, is specified by three aspects:
 
 ### The $\mu_{ij} \mid T_j$ prior
 
-For convenience, we first shift and rescale $Y$ so that the observed transformed $y$ values range from $y_{min} = -0.5$ to $y_{max} = 0.5$, then the prior is
+For convenience, we first shift and rescale $y$ so that the observed transformed values range from $y_{min} = -0.5$ to $y_{max} = 0.5$, then the prior is
 
-$$\mu_{ij} \sim N(0, \sigma_{\mu}^2)$$
+$$\mu_{ij} \sim \mathcal{N}(0, \sigma_{\mu}^2)$$
 
 where $\sigma_{\mu} = \frac{0.5}{k\sqrt{m}}$.
 
-This prior has the effect of shrinking the tree parameters $\mu_{ij}$ toward zero, limiting the effect of the individual tree components by keeping them small. Note that as $k$ and/or $m$ is increased, this prior will become tighter and apply greater shrinkage to the $\mu_{ij}$. Chipman et al. found that a value of $k$ between $1$ and $3$ yield good results.
+This prior has the effect of shrinking the tree parameters $\mu_{ij}$ toward zero, limiting the effect of the individual tree components by keeping them small. Note that as $k$ and/or $m$ is increased, this prior will become tighter and apply greater shrinkage to the $\mu_{ij}$. Chipman et al. (2010) found that a value of $k$ between $1$ and $3$ yield good results.
 
 ### The $\sigma$ prior
 
@@ -99,13 +99,13 @@ $$\sigma^2 \sim \frac{\nu\lambda}{X_{\nu}^2}$$
 
 Essentially, we calibrate the prior for the degree of freedom $\nu$ and scale $\lambda$ for this purpose using a _rough data-based overestimate_ $\hat \sigma$ of $\sigma$. Two natural choices for $\hat \sigma$ are:
 
-* the _naive_ specification, in which we take $\hat \sigma$ to be the sample standard deviation of $Y$
-* the _linear model_ specification, in which we take $\hat \sigma$ as the residual standard deviation from a least squares linear regression of $Y$ on the original $X$.
+* the _naive_ specification, in which we take $\hat \sigma$ to be the sample standard deviation of $y$
+* the _linear model_ specification, in which we take $\hat \sigma$ as the residual standard deviation from a least squares linear regression of $y$ on the original $X$.
 
 We then pick a value of $\nu$ between $3$ and $10$ to get an appropriate shape, and a value of $\lambda$ so that the $q$th quantile of the prior on $\sigma$ is located at $\hat \sigma$, that is, $P(\sigma < \hat \sigma) = q$. We consider values of $q$ such as $0.75$, $0.90$ or $0.99$ to center the distribution below $\hat \sigma$.
 
 
-For automatic use, Chipman et al. recommend the default setting $(\nu, q) = (3, 0.90)$. It is not recommended to choose $\nu < 3$ because it seems to concentrate too much mass on very small $\sigma$ values, which leads to overfitting.
+For automatic use, Chipman et al. (2010) recommend the default setting $(\nu, q) = (3, 0.90)$. It is not recommended to choose $\nu < 3$ because it seems to concentrate too much mass on very small $\sigma$ values, which leads to overfitting.
 
 ### The choice of $m$
 
@@ -117,17 +117,17 @@ Given the observed data $y$, the Bayesian setup induces a posterior distribution
 
 $$ p((T_1, M_1), \ldots, (T_m, M_m), \sigma \mid y) $$
 
-on all the unknowns that determine a sum-of-trees model (\ref{well-specified-sum-of-tree-model}). Although the sheer size of the parameter space precludes exhaustive calculation, Chipman et al. propose a backfitting MCMC algorithm that can be used to sample from this posterior. On the other hand, Lakshminarayanan et al. show that Particle Gibbs is a better approach for Bayesian Additive Regression Trees. In a future post, we'll talk more about this.
+on all the unknowns that determine a sum-of-trees model (\ref{well-specified-sum-of-tree-model}). Although the sheer size of the parameter space precludes exhaustive calculation, Chipman et al. (2010) propose a backfitting MCMC algorithm that can be used to sample from this posterior. On the other hand, Lakshminarayanan et al. (2015) show that Particle Gibbs is a better approach for Bayesian Additive Regression Trees. In a future post, we'll talk more about this.
 
 # Results
 The ouput of a BART model is:
-* a posterior mean estimate of $f(x) = E(Y \mid x)$ at any input value $x$ 
+* a posterior mean estimate of $f(x) = E(y \mid x)$ at any input value $x$ 
 * pointwise uncertainty intervals for $f(x)$
 * variable importance meassures. This is done by keeping track of the relative frequency with which $x$ components appear in the sum-of-trees model iterations.
 
 # References
-1. Chipman, H. A., George, E. I., & McCulloch, R. E. (2010). BART: Bayesian additive regression trees. The Annals of Applied Statistics, 4(1), 266-298.
-2. Lakshminarayanan, B., Roy, D. M., Teh, Y. W., & Unit, G. (2015, February). Particle Gibbs for Bayesian Additive Regression Trees. In AISTATS.
-3. Kapelner, A., & Bleich, J. (2013). bartMachine: Machine learning with Bayesian additive regression trees. arXiv preprint arXiv:1312.2171.
+1. Chipman, H. A., George, E. I., & McCulloch, R. E. (2010). BART: Bayesian additive regression trees. *The Annals of Applied Statistics*, *4*(1), 266-298.
+2. Lakshminarayanan, B., Roy, D., & Teh, Y. W. (2015). Particle Gibbs for Bayesian additive regression trees. In *Artificial Intelligence and Statistics* (pp. 553-561).
+3. Kapelner, A., & Bleich, J. (2013). bartMachine: Machine learning with Bayesian additive regression trees. *arXiv preprint arXiv:1312.2171*.
 4. Chipman, H. A., George, E. I., & McCulloch, R. E. (1998). Bayesian CART model search. *Journal of the American Statistical Association*, *93*(443), 935-948.
 5. Tan, Y. V., & Roy, J. (2019). Bayesian additive regression trees and the General BART model. *arXiv preprint arXiv:1901.07504*.
