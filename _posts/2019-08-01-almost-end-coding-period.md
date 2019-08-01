@@ -1,7 +1,7 @@
 ---
 title: 'The coding period is coming to an end'
 date: 2019-08-01
-permalink: /posts/2019/08/end-coding-period
+permalink: /posts/2019/08/almost-end-coding-period
 excerpt: 'In this post we will reflect on what we been doing for GSoC and some of the difficulties that arose.'
 tags: GSoC
 ---
