@@ -95,7 +95,7 @@ This prior has the effect of shrinking the tree parameters $\mu_{ij}$ toward zer
 
 We used the inverse chi-square distribution
 
-$$\sigma^2 \sim \frac{\nu\lambda}{X_{\nu}^2}$$
+$$\sigma^2 \sim \frac{\nu\lambda}{\chi_{\nu}^2}$$
 
 Essentially, we calibrate the prior for the degree of freedom $\nu$ and scale $\lambda$ for this purpose using a _rough data-based overestimate_ $\hat \sigma$ of $\sigma$. Two natural choices for $\hat \sigma$ are:
 
