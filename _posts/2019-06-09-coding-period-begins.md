@@ -2,7 +2,7 @@
 title: 'Coding period begins'
 date: 2019-06-09
 permalink: /posts/2019/06/coding-period-begins
-tags: GSoC
+tags: GSoC-2019
 ---
 
 At this point the bonding period already ended and we are in the middle of the coding period. In this post I will tell you how things are going.

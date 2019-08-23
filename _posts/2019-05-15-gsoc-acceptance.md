@@ -2,7 +2,7 @@
 title: 'Accepted to the Google Summer of Code 2019'
 date: 2019-05-15
 permalink: /posts/2019/05/gsoc-acceptance
-tags: GSoC
+tags: GSoC-2019
 ---
 
 ```python

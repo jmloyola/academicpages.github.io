@@ -3,7 +3,7 @@ title: 'The coding period is coming to an end'
 date: 2019-08-01
 permalink: /posts/2019/08/almost-end-coding-period
 excerpt: 'In this post we will reflect on what we been doing for GSoC and some of the difficulties that arose.'
-tags: GSoC
+tags: GSoC-2019
 ---
 
 We already passed two thirds of the coding period for GSoC, with only two weeks left.

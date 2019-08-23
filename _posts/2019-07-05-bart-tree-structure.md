@@ -4,7 +4,7 @@ date: 2019-07-05
 permalink: /posts/2019/07/bart-tree-structure
 excerpt: 'In this post we will show the implementation for the tree structure of BART.'
 tags:
-  - GSoC
+  - GSoC-2019
   - BART
 ---
 

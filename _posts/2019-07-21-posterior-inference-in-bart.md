@@ -4,7 +4,7 @@ date: 2019-07-21
 permalink: /posts/2019/07/posterior-inference-in-bart
 excerpt: 'In this post we will show how the posterior inference in BART is performed.'
 tags:
-  - GSoC
+  - GSoC-2019
   - BART
 ---
 

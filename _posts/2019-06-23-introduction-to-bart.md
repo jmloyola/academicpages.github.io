@@ -7,7 +7,7 @@ header:
   caption: "San Luis, Argentina"
 excerpt: 'In this post we will delve into the theory of Bayesian Additive Regression Trees (BART).'
 tags:
-  - GSoC
+  - GSoC-2019
   - BART
 ---
 
