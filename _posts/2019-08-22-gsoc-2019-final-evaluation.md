@@ -28,9 +28,9 @@ But, sadly we didn't meet all the goals we set in the beginning.
 There are still a lot more debugging to do to ensure the model is correct.
 
 The main files for the project are:
-- [Tree structure]((https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/bart/tree.py)). Defines the classes `Tree`, `BaseNode`, `SplitNode` and `LeafNode`.
+- [Tree structure](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/bart/tree.py).
 - [BART](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/bart/bart.py).
-- [BART exceptions](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/bart/exceptions.py). Defines the three classes of errors: `TreeStructureError`, `TreeNodeError`, `BARTParamsError`.
+- [BART exceptions](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/bart/exceptions.py).
 - [Tests for nodes](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/tests/test_tree_nodes.py).
 - [Tests for tree structure](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/tests/test_tree_structure.py).
 - [Tests for BART](https://github.com/jmloyola/pymc3/blob/add_bart/pymc3/tests/test_bart.py).
@@ -38,7 +38,7 @@ The main files for the project are:
 ## Things done
 
 - Community bonding period. During this time I learned more about PyMC and the BART model. I also set up this blog. For more details you can check this blog post: ["Coding period begins"]({{ site.baseurl }}{% post_url 2019-06-09-coding-period-begins %}).
-- Understand the BART model. This involved reading many research papers and different implementations. The most relevant papers read were _Chipman et al. (2010)_, _Chipman et al. (1998)_, _Lakshminarayanan et al. (2015)_, _Tan et al. (2019)_ and _Kapelner & Bleich (2013)_. I studied the code for some BART implementations to complement the information given in the papers: [bartpy](https://github.com/JakeColtman/bartpy), [pgbart](https://github.com/balajiln/pgbart) and [bartMachine](https://github.com/kapelner/bartMachine). Finally, some notes I wrote about this process can be seen in this blog:
+- Understand the BART model. This involved reading many research papers and different implementations. The most relevant papers read were _Chipman et al. (2010)_, _Chipman et al. (1998)_, _Lakshminarayanan et al. (2015)_, _Tan et al. (2019)_ and _Kapelner & Bleich (2013)_. I studied the code for some BART implementations to complement the information given in the papers, for example, [bartpy](https://github.com/JakeColtman/bartpy), [pgbart](https://github.com/balajiln/pgbart) and [bartMachine](https://github.com/kapelner/bartMachine). Finally, some notes I wrote about this process can be seen in this blog:
 	- ["Introduction to Bayesian Additive Regression Trees"]({{ site.baseurl }}{% post_url 2019-06-23-introduction-to-bart %}).
 	- ["Posterior inference in Bayesian Additive Regression Trees"]({{ site.baseurl }}{% post_url 2019-07-21-posterior-inference-in-bart %}).
 - [Implement the tree structure](https://github.com/jmloyola/pymc3/commit/0ddb3dc9584f2b6ca5b45d4b6d33d9de317d3e4f). For details on the choosen tree structure implementation, you can check this blog post: ["BART's tree structure implementation"]({{ site.baseurl }}{% post_url 2019-07-05-bart-tree-structure %}).
@@ -91,4 +91,4 @@ To extend the model we should:
 9. He, J., Yalov, S., & Hahn, P. R. (2019, April). XBART: Accelerated Bayesian Additive Regression Trees. In *The 22nd International Conference on Artificial Intelligence and Statistics* (pp. 1130-1138).
 
 ## Acknowledgments
-I will like to thanks Google and NumFOCUS for promoting open-source projects and bringing students closer to open-source communities; PyMC for the warm welcome to the community; and Austin Rochford and Osvaldo Martin for their support as mentors during the development of the project.
+I will like to thanks __Google__ and __NumFOCUS__ for promoting open-source projects and bringing students closer to open-source communities; __PyMC__ for the warm welcome to the community; and __Austin Rochford__ and __Osvaldo Martin__ for their support as mentors during the development of the project.
