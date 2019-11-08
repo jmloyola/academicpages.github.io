@@ -9,7 +9,7 @@ location: "San Luis, Argentina"
 ---
 
 
-I gave a short talk titled "Búsqueda de Patrones en Texto" (in english, "Search for patterns in text") as part of a [PyData San Luis MeetUp](https://www.meetup.com/es-ES/PyData-San-Luis/events/256472954/), "Introducción a la computación científica con Python" (in english, "Introduction to scientific computing with Python".
+I gave a short talk titled "Búsqueda de Patrones en Texto" (in english, "Search for patterns in text") as part of a [PyData San Luis MeetUp](https://www.meetup.com/es-ES/PyData-San-Luis/events/256472954/), "Introducción a la computación científica con Python" (in english, "Introduction to scientific computing with Python").
 
 In this talk, I introduced shortly the problem of pattern search in text.
 The example we used to understand this problem was the searching of telephone numbers in a big text file.
