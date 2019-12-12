@@ -13,3 +13,5 @@ I gave a talk at the [PyData San Luis MeetUp](https://www.meetup.com/es-ES/PyDat
 In this talk, I introduced shortly the history, problems and applications of Machine Learning.
 I guided the assistants to implemented the algorithm of k-Nearest Neighbor (kNN) for image classification. 
 This exercise helped understand the basic image classification pipeline.
+
+The slides are available [here](../files/talks/2017_meetup.pdf).
