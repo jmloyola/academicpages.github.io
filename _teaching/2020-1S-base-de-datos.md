@@ -8,4 +8,4 @@ date: 2020-03-01
 excerpt: "<i>Teaching assistant</i>"
 ---
 
-&quot;Base de Datos&quot; is a required computer engineering undergraduate course at the National University of San Luis that provides an introduction to data bases.
+&quot;Base de Datos&quot; is a required computer engineering undergraduate course at the National University of San Luis that provides an introduction to databases.
